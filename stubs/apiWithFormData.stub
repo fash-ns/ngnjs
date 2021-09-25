@@ -1,7 +1,7 @@
-import nc from "app/utils/baseNC";
-import {NGNApiResponse} from "app/types/NGNApiResponse";
-import {NGNApiRequest} from "app/types/NGNApiRequest";
-import withFormData from "app/middlewares/withFormData";
+import nc from "ngn/dist/utils/baseNC";
+import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
+import withFormData from "ngn/dist/middlewares/withFormData";
 
 export default nc().use(withFormData).get(async (req: NGNApiRequest, res: NGNApiResponse) => {
     //TODO: implement endpoint

@@ -1,11 +1,12 @@
-import {existsSync} from "fs";
+import fs from "fs";
 
 const loadConfFile = (path: string, defaultConf: any) => {
-    const absolutePath = process.cwd() + '/' + path + '.config';
-    const confExist = existsSync(absolutePath + '.js');
-    console.log("file name is: ", absolutePath);
-    if(confExist)
-        return require(absolutePath);
+    const absolutePath = process.cwd() + '/' + path + '.json';
+    const confExist = fs.existsSync(absolutePath);
+    if(confExist){
+        const file = fs.readFileSync(absolutePath).toString();
+        return JSON.parse(file);
+    }
     return defaultConf;
 }
 

@@ -1,6 +1,6 @@
-import nc from "app/utils/baseNC";
-import {NGNApiResponse} from "app/types/NGNApiResponse";
-import {NGNApiRequest} from "app/types/NGNApiRequest";
+import nc from "ngn/dist/utils/baseNC";
+import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
 
 export default nc().get((req: NGNApiRequest, res: NGNApiResponse) => {
     //TODO: implement endpoint

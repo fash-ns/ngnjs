@@ -1,6 +1,6 @@
-const trustedProxies: Array<string> = [
-    '192.168.1.1',
-    '.1'
+const config = [
+    "192.168.1.1",
+    ".1"
 ];
 
-export default trustedProxies;
+export default config;

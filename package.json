@@ -2,7 +2,7 @@
   "name": "ngn",
   "version": "0.1.0alpha",
   "description": "Set of utils for make NextJs even easier",
-  "main": "dist/errors/FileNotFoundError.js",
+  "main": "dist/",
   "repository": "https://github.com/fash-ns/ngn-package.git",
   "author": "Farbod Shams <farbodshams.2000@gmail.com>",
   "license": "apache-2.0",
@@ -22,5 +22,8 @@
     "@types/cookie": "^0.4.1",
     "@types/formidable": "^1.2.4",
     "typescript": "^4.4.3"
+  },
+  "peerDependencies": {
+    "next": "^11.1.2"
   }
 }

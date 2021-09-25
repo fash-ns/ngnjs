@@ -1,7 +1,7 @@
-const rateLimit = {
-    number: 1,
-    duration: 60,
-    ipExceptions: []
-}
+const config = {
+  "number": 60,
+  "duration": 60,
+  "ipExceptions": []
+};
 
-export default rateLimit
+export default config;
