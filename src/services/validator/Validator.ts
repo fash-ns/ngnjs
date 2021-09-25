@@ -1,6 +1,6 @@
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 import Rule from "./rules/Rule";
-import {ValidationResult} from "types/ValidationResult";
+import {ValidationResult} from "../../types/ValidationResult";
 
 class Validator {
 

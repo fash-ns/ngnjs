@@ -1,6 +1,6 @@
-import LoggerInterface, {LogLevels, LogLevelsString} from "services/logger/LoggerInterface";
+import LoggerInterface, {LogLevels, LogLevelsString} from "../../services/logger/LoggerInterface";
 import fs from "fs";
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 
 class Logger implements LoggerInterface {
     private readonly logFileName: string;
@@ -18,7 +18,7 @@ class Logger implements LoggerInterface {
         const dayNum = dateObj.getDate();
         let day = dayNum.toString();
         if (dayNum < 10) day = "0" + day;
-        this.logFileName = `storage/logs/${year}-${month}-${day}.log`;
+        this.logFileName = process.cwd() + `/storage/logs/${year}-${month}-${day}.log`;
         if (!fs.existsSync(this.logFileName))
             fs.writeFile(this.logFileName, "", () => {});
     }

@@ -1,10 +1,10 @@
-import {Middleware} from "types/Middleware";
-import {NGNApiRequest} from "types/NGNApiRequest";
-import {NGNApiResponse} from "types/NGNApiResponse";
-import {NextHandler} from "types/NextHandler";
-import sampleTrustedProxies from "config/trustedProxies";
-import Ip from "facades/Ip";
-import loadConfFile from "utils/helpers/loadConfFile";
+import {Middleware} from "../types/Middleware";
+import {NGNApiRequest} from "../types/NGNApiRequest";
+import {NGNApiResponse} from "../types/NGNApiResponse";
+import {NextHandler} from "../types/NextHandler";
+import sampleTrustedProxies from "../config/trustedProxies";
+import Ip from "../facades/Ip";
+import loadConfFile from "../utils/helpers/loadConfFile";
 
 /**
  * @author FaSh<farbodshams.2000@gmail.com>

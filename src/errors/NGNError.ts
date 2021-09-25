@@ -1,4 +1,4 @@
-import Keyable from "types/Keyable";
+import Keyable from "../types/Keyable";
 
 class NGNError extends Error{
     public readonly status: number;

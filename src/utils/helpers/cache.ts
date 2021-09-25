@@ -1,4 +1,4 @@
-import sampleProviders from "config/providers";
+import sampleProviders from "../../config/providers";
 import loadConfFile from "./loadConfFile";
 
 const cache = () => {

@@ -1,8 +1,8 @@
-import CacheDriver from "services/cache/CacheDriver";
+import CacheDriver from "./CacheDriver";
 import {createClient} from 'redis';
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 import {RedisClientType} from "redis/dist/lib/client";
-import Logger from "services/logger/Logger";
+import Logger from "../../services/logger/Logger";
 import EnvKeyIsNotSetError from "../../errors/EnvKeyIsNotSetError";
 
 /**

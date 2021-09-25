@@ -1,10 +1,10 @@
-import {NGNApiRequest} from "types/NGNApiRequest";
-import {NGNApiResponse} from "types/NGNApiResponse";
-import RedisCache from "services/cache/RedisCache";
+import {NGNApiRequest} from "../types/NGNApiRequest";
+import {NGNApiResponse} from "../types/NGNApiResponse";
+import RedisCache from "../services/cache/RedisCache";
 import {networkInterfaces} from "os";
-import sampleConfig from "config/rate-limit";
-import TooManyRequestsError from "errors/TooManyRequestsError";
-import loadConfFile from "utils/helpers/loadConfFile";
+import sampleConfig from "../config/rate-limit";
+import TooManyRequestsError from "../errors/TooManyRequestsError";
+import loadConfFile from "../utils/helpers/loadConfFile";
 
 const withThrottle = async (req: NGNApiRequest & {ip: string | null}, res: NGNApiResponse, next: () => void) => {
     const config = loadConfFile("config/rate-limit", sampleConfig);

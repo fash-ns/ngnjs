@@ -1,11 +1,11 @@
 import {CookieSerializeOptions, serialize} from "cookie";
-import Hash from "facades/Hash";
-import {NGNApiResponse} from "types/NGNApiResponse";
-import {NextHandler} from "types/NextHandler";
-import {Middleware} from "types/Middleware";
-import {NextApiRequest} from "types/NextApiRequest";
-import {NextApiResponse} from "types/NextApiResponse";
-import EnvKeyIsNotSetError from "errors/EnvKeyIsNotSetError";
+import Hash from "../facades/Hash";
+import {NGNApiResponse} from "../types/NGNApiResponse";
+import {NextHandler} from "../types/NextHandler";
+import {Middleware} from "../types/Middleware";
+import {NextApiRequest} from "../types/NextApiRequest";
+import {NextApiResponse} from "../types/NextApiResponse";
+import EnvKeyIsNotSetError from "../errors/EnvKeyIsNotSetError";
 
 const setCookie = (res: NextApiResponse) => (name: string, value: string, options: CookieSerializeOptions = {}) => {
     options.secure = process.env.NODE_ENV === 'production';

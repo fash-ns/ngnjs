@@ -1,4 +1,4 @@
-import {NextApiResponse} from "types/NextApiResponse";
+import {NextApiResponse} from "../types/NextApiResponse";
 import {CookieSerializeOptions} from "cookie";
 
 export type NGNApiResponse = NextApiResponse & {

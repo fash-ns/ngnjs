@@ -1,5 +1,5 @@
 import NGNError from "./NGNError";
-import Keyable from "types/Keyable";
+import Keyable from "../types/Keyable";
 
 class ValidationError extends NGNError{
     constructor(message: string, context: Keyable) {

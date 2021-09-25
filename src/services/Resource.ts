@@ -1,4 +1,4 @@
-import Keyable from "types/Keyable";
+import Keyable from "../types/Keyable";
 
 export default abstract class Resource {
     private readonly resource: Keyable | Array<Keyable>;

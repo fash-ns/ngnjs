@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import FileNotFoundError from "errors/FileNotFoundError";
-import Keyable from "types/Keyable";
+import FileNotFoundError from "../../errors/FileNotFoundError";
+import Keyable from "../../types/Keyable";
 import fileType from "file-type";
 
 class File{

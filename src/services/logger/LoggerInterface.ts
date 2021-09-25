@@ -1,4 +1,4 @@
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 
 export enum LogLevels {
     "EMERGENCY",

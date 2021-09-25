@@ -1,11 +1,11 @@
 import formidable from "formidable";
-import {NGNApiRequest} from "types/NGNApiRequest";
-import {NextHandler} from "types/NextHandler";
-import {Middleware} from "types/Middleware";
-import {NextApiResponse} from "types/NextApiResponse";
-import NGNError from "errors/NGNError";
-import Keyable from "types/Keyable";
-import UploadedFile from "facades/File/UploadedFile";
+import {NGNApiRequest} from "../types/NGNApiRequest";
+import {NextHandler} from "../types/NextHandler";
+import {Middleware} from "../types/Middleware";
+import {NextApiResponse} from "../types/NextApiResponse";
+import NGNError from "../errors/NGNError";
+import Keyable from "../types/Keyable";
+import UploadedFile from "../facades/File/UploadedFile";
 
 const form = formidable({multiples: true});
 

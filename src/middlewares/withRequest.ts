@@ -1,7 +1,7 @@
-import {NGNApiRequest} from "types/NGNApiRequest";
-import {NGNApiResponse} from "types/NGNApiResponse";
-import {NextHandler} from "types/NextHandler";
-import {Middleware} from "types/Middleware";
+import {NGNApiRequest} from "../types/NGNApiRequest";
+import {NGNApiResponse} from "../types/NGNApiResponse";
+import {NextHandler} from "../types/NextHandler";
+import {Middleware} from "../types/Middleware";
 
 const withRequest: Middleware = (req: NGNApiRequest, res: NGNApiResponse, next: NextHandler) => {
     req.files = {};

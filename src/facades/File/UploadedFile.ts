@@ -1,7 +1,7 @@
 import File from "./File";
 import * as fs from "fs";
-import Random from "facades/Random";
-import Path from "facades/Path";
+import Random from "../../facades/Random";
+import Path from "../../facades/Path";
 import Formidable from "formidable"
 
 class UploadedFile extends File{

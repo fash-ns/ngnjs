@@ -1,7 +1,7 @@
-import CacheDriver from "services/cache/CacheDriver";
+import CacheDriver from "../../services/cache/CacheDriver";
 import * as fs from "fs";
 import {createHash} from "crypto";
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 
 /**
  * @author FaSh<farbodshams.2000@gmail.com>

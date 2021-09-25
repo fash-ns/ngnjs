@@ -1,4 +1,4 @@
-import EnvKeyIsNotSetError from "errors/EnvKeyIsNotSetError";
+import EnvKeyIsNotSetError from "../errors/EnvKeyIsNotSetError";
 
 class Path{
     public static makeStorageUrl(path: string){

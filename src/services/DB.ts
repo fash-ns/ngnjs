@@ -1,5 +1,5 @@
 import mongoose, {Mongoose} from "mongoose";
-import EnvKeyIsNotSetError from "errors/EnvKeyIsNotSetError";
+import EnvKeyIsNotSetError from "../errors/EnvKeyIsNotSetError";
 import DatabaseError from "../errors/DatabaseError";
 
 class DB{

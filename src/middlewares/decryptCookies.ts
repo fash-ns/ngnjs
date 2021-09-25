@@ -1,11 +1,11 @@
-import {HashedData} from "types/HashedData";
-import Hash from "facades/Hash";
-import Keyable from "types/Keyable";
-import {NextHandler} from "types/NextHandler";
-import {Middleware} from "types/Middleware";
-import {NextApiRequest} from "types/NextApiRequest";
-import {NextApiResponse} from "types/NextApiResponse";
-import EnvKeyIsNotSetError from "errors/EnvKeyIsNotSetError";
+import {HashedData} from "../types/HashedData";
+import Hash from "../facades/Hash";
+import Keyable from "../types/Keyable";
+import {NextHandler} from "../types/NextHandler";
+import {Middleware} from "../types/Middleware";
+import {NextApiRequest} from "../types/NextApiRequest";
+import {NextApiResponse} from "../types/NextApiResponse";
+import EnvKeyIsNotSetError from "../errors/EnvKeyIsNotSetError";
 
 const decryptCookies: Middleware = (req: NextApiRequest, res: NextApiResponse, next: NextHandler) => {
     const cookies: Keyable<string> = req.cookies;

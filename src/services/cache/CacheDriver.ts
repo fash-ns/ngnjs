@@ -1,4 +1,4 @@
-import Keyable from "types/Keyable";
+import Keyable from "../../types/Keyable";
 
 /**
  * @author FaSh<farbodshams.2000@gmail.com>

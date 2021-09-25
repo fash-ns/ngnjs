@@ -1,6 +1,6 @@
 import {createCipheriv, createDecipheriv, randomBytes} from "crypto";
-import {HashedData} from "types/HashedData";
-import EnvKeyIsNotSetError from "errors/EnvKeyIsNotSetError";
+import {HashedData} from "../types/HashedData";
+import EnvKeyIsNotSetError from "../errors/EnvKeyIsNotSetError";
 
 class Hash {
     private static readonly key: string | undefined = process.env.APP_KEY;
