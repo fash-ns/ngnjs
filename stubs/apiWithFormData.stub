@@ -1,0 +1,13 @@
+import nc from "app/utils/baseNC";
+import {NGNApiResponse} from "app/types/NGNApiResponse";
+import {NGNApiRequest} from "app/types/NGNApiRequest";
+import withFormData from "app/middlewares/withFormData";
+
+export default nc().use(withFormData).get(async (req: NGNApiRequest, res: NGNApiResponse) => {
+    //TODO: implement endpoint
+    res.status(200).json({message: "new endpoint created", name: "{name}.ts", supportsFormData: true});
+});
+
+export const config = {
+    api: {bodyParser: false}
+}

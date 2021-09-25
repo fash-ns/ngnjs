@@ -1,0 +1,1 @@
+export type NextHandler = (err?: any) => void;

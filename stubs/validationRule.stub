@@ -1,0 +1,15 @@
+import Rule from "app/services/validator/rules/Rule";
+
+class {name} implements Rule{
+    evaluate(object: any): boolean | Promise<boolean> {
+        //TODO: implement validation rule logic
+        return true;
+    }
+
+    getError(fieldName: string): string {
+        //TODO: determine error message
+        return "";
+    }
+}
+
+export default {name};

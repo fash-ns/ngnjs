@@ -1,0 +1,10 @@
+import {NGNApiRequest} from "app/types/NGNApiRequest";
+import {NGNApiResponse} from "app/types/NGNApiResponse";
+import {NextHandler} from "app/types/NextHandler";
+import {Middleware} from "app/types/Middleware";
+
+const {name}: Middleware = (req: NGNApiRequest, res: NGNApiResponse, next: NextHandler) => {
+    next(); //TODO: implement {name} middleware
+}
+
+export default {name};

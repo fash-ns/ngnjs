@@ -1,0 +1,15 @@
+import Head from "next/head";
+
+const {name} = () => {
+    return (<>
+        <Head>
+            <title>welcome to {name}</title>
+        </Head>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+            <h2>new page created!</h2>
+            <p>try editing <code>{name}.tsx</code> to implement this page</p>
+        </div>
+    </>);
+}
+
+export default {name};
