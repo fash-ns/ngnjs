@@ -1,4 +1,4 @@
-import Rule from "ngn/dist/services/validator/rules/Rule";
+import Rule from "ngnjs/dist/services/validator/rules/Rule";
 
 class {name} implements Rule{
     evaluate(object: any): boolean | Promise<boolean> {

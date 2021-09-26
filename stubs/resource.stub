@@ -1,5 +1,5 @@
-import Resource from "ngn/dist/services/Resource";
-import Keyable from "ngn/dist/types/Keyable";
+import Resource from "ngnjs/dist/services/Resource";
+import Keyable from "ngnjs/dist/types/Keyable";
 
 class {name} extends Resource{
     protected make(context: Keyable): Keyable {

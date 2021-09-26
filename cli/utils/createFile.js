@@ -12,7 +12,7 @@ const createFile = async (name, basePath, stubPath, manipulation = {}, ext = 'ts
         console.log("\x1b[31mSelected file '" + filePath + "' is already exists");
         return false;
     }
-    let file = fs.readFileSync(process.cwd() + '/node_modules/ngn/' + stubPath).toString();
+    let file = fs.readFileSync(process.cwd() + '/node_modules/ngnjs/' + stubPath).toString();
     for (let key in manipulation){
         if(!manipulation.hasOwnProperty(key)) continue;
         file = fileManipulate(file, key, manipulation[key]);

@@ -1,7 +1,7 @@
-import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
-import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
-import {NextHandler} from "ngn/dist/types/NextHandler";
-import {Middleware} from "ngn/dist/types/Middleware";
+import {NGNApiRequest} from "ngnjs/dist/types/NGNApiRequest";
+import {NGNApiResponse} from "ngnjs/dist/types/NGNApiResponse";
+import {NextHandler} from "ngnjs/dist/types/NextHandler";
+import {Middleware} from "ngnjs/dist/types/Middleware";
 
 const {name}: Middleware = (req: NGNApiRequest, res: NGNApiResponse, next: NextHandler) => {
     next(); //TODO: implement {name} middleware

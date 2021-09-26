@@ -1,12 +1,12 @@
-import withSetCookie from "ngn/dist/middlewares/withSetCookie";
-import decryptCookies from "ngn/dist/middlewares/decryptCookies";
-import Keyable from "ngn/dist/types/Keyable";
-import {Middleware} from "ngn/dist/types/Middleware";
-import withRequest from "ngn/dist/middlewares/withRequest";
-import withValidator from "ngn/dist/middlewares/withValidator";
-import withIp from "ngn/dist/middlewares/withIp";
-import withThrottle from "ngn/dist/middlewares/withThrottle";
-import withSession from "ngn/dist/middlewares/withSession";
+import withSetCookie from "ngnjs/dist/middlewares/withSetCookie";
+import decryptCookies from "ngnjs/dist/middlewares/decryptCookies";
+import Keyable from "ngnjs/dist/types/Keyable";
+import {Middleware} from "ngnjs/dist/types/Middleware";
+import withRequest from "ngnjs/dist/middlewares/withRequest";
+import withValidator from "ngnjs/dist/middlewares/withValidator";
+import withIp from "ngnjs/dist/middlewares/withIp";
+import withThrottle from "ngnjs/dist/middlewares/withThrottle";
+import withSession from "ngnjs/dist/middlewares/withSession";
 
 const middlewares: Keyable<Array<Middleware>> = {
     "/": [

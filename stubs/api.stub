@@ -1,7 +1,7 @@
 import handler from "../../handler";
-import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
-import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
-{B/formData}import withFormData from "ngn/dist/middlewares/withFormData";{E/formData}
+import {NGNApiResponse} from "ngnjs/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngnjs/dist/types/NGNApiRequest";
+{B/formData}import withFormData from "ngnjs/dist/middlewares/withFormData";{E/formData}
 
 export default handler(){B/formData}.use(withFormData){E/formData}.get((req: NGNApiRequest, res: NGNApiResponse) => {
     //TODO: implement endpoint

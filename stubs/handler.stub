@@ -1,12 +1,12 @@
 import nc from "next-connect"
 import sampleMiddlewares from "./config/middlewares";
-import {NextApiRequest} from "ngn/dist/types/NextApiRequest";
-import {NextApiResponse} from "ngn/dist/types/NextApiResponse";
-import Logger from "ngn/dist/services/logger/Logger";
-import Keyable from "ngn/dist/types/Keyable";
-import NGNError from "ngn/dist/errors/NGNError";
-import loadConfFile from "ngn/dist/utils/helpers/loadConfFile";
-import {Middleware} from "ngn/dist/types/Middleware";
+import {NextApiRequest} from "ngnjs/dist/types/NextApiRequest";
+import {NextApiResponse} from "ngnjs/dist/types/NextApiResponse";
+import Logger from "ngnjs/dist/services/logger/Logger";
+import Keyable from "ngnjs/dist/types/Keyable";
+import NGNError from "ngnjs/dist/errors/NGNError";
+import loadConfFile from "ngnjs/dist/utils/helpers/loadConfFile";
+import {Middleware} from "ngnjs/dist/types/Middleware";
 
 const errorHandler = (err: NGNError, req: NextApiRequest, res: NextApiResponse) => {
     const context: Keyable = {
