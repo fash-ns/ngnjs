@@ -4,7 +4,10 @@
   "description": "Set of utils for make NextJs even easier",
   "main": "dist/",
   "repository": "https://github.com/fash-ns/ngnjs.git",
-  "author": "Farbod Shams <farbodshams.2000@gmail.com>",
+  "author": {
+    "name": "Farbod Shams",
+    "email": "farbodshams.2000@gmail.com"
+  },
   "license": "apache-2.0",
   "private": false,
   "bin": {
