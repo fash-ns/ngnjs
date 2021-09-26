@@ -1,11 +1,10 @@
 import nc from "next-connect"
-import sampleMiddlewares from "./config/middlewares";
+import middlewares from "./config/middlewares";
 import {NextApiRequest} from "ngnjs/dist/types/NextApiRequest";
 import {NextApiResponse} from "ngnjs/dist/types/NextApiResponse";
 import Logger from "ngnjs/dist/services/logger/Logger";
 import Keyable from "ngnjs/dist/types/Keyable";
 import NGNError from "ngnjs/dist/errors/NGNError";
-import loadConfFile from "ngnjs/dist/utils/helpers/loadConfFile";
 import {Middleware} from "ngnjs/dist/types/Middleware";
 
 const errorHandler = (err: NGNError, req: NextApiRequest, res: NextApiResponse) => {
@@ -27,7 +26,6 @@ const noMatchHandler = (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 const handler = () => {
-    const middlewares = loadConfFile('config/middlewares', sampleMiddlewares);
     const instance = nc({onError: errorHandler, onNoMatch: noMatchHandler});
     for (let endpoint in middlewares){
         if(middlewares.hasOwnProperty(endpoint))

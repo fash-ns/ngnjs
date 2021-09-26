@@ -1,12 +1,17 @@
 import {Middleware} from "../types/Middleware";
-import session from "next-session";
+import nextSession from "next-session";
 
-const withSession: Middleware = session({
+const session = nextSession({
     name: process.env.SESSION_KEY ?? "ngn_session",
     cookie: {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true
     },
 });
+
+const withSession: Middleware = async (req, res, next) => {
+    await session(req, res);
+    next();
+}
 
 export default withSession;

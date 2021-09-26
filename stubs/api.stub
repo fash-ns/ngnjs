@@ -1,4 +1,4 @@
-import handler from "../../handler";
+import handler from "{pathToRoot}handler";
 import {NGNApiResponse} from "ngnjs/dist/types/NGNApiResponse";
 import {NGNApiRequest} from "ngnjs/dist/types/NGNApiRequest";
 {B/formData}import withFormData from "ngnjs/dist/middlewares/withFormData";{E/formData}

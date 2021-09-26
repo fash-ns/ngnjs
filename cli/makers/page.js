@@ -16,7 +16,7 @@ const createPage = async () => {
                 manipulationConf.ssgPath = true;
         }
     }
-    await createFile(name, "./pages", "./stubs/page.stub", manipulationConf,  "tsx");
+    await createFile(name, "./pages", "./stubs/page.stub", manipulationConf,  {}, "tsx");
 }
 
 module.exports = createPage;

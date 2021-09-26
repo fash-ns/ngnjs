@@ -1,7 +1,8 @@
 const fs = require("fs");
 const fileManipulate = require("../utils/fileManipulate");
 
-const createFile = async (name, basePath, stubPath, manipulation = {}, ext = 'ts') => {
+const createFile = async (name, basePath, stubPath, manipulation = {}, context = {}, ext = 'ts') => {
+    const basePathNestedLevel = basePath.split('/').length;
     basePath = process.cwd() + '/' + basePath;
     name = name.replace(/\s/g, '');
     const arrName = name.split('/');
@@ -17,7 +18,14 @@ const createFile = async (name, basePath, stubPath, manipulation = {}, ext = 'ts
         if(!manipulation.hasOwnProperty(key)) continue;
         file = fileManipulate(file, key, manipulation[key]);
     }
-    file = file.replace(/{name}/g, fileName);
+    context.name = fileName;
+    context.pathToRoot = '../'.repeat(basePathNestedLevel + arrName.length - 1);
+
+    for (let key in context){
+        if(!context.hasOwnProperty(key)) continue;
+        const regex = new RegExp(`{${key}}`, 'g');
+        file = file.replace(regex, context[key]);
+    }
     file = file.replace(/\n{3,}/g, "\n\n");
     await fs.promises.mkdir(`${basePath}/${dirName}`, {recursive: true});
     await fs.promises.writeFile(filePath, file);
