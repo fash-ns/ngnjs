@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 **CAUTION** this project is still alpha version and under maintenance
 
 ## About NGN
@@ -32,8 +30,7 @@ next js. Lots of features are added to next js by NGN. some of them are:
 
 ## How to use
 
-The way to use NGN is nothing different from next js. You can simply use `yarn dev` or `npm run dev` to start
-development server on `http://localhost:3000` and `yarn build` or `npm run build` for creating a production build and
-finally `yarn start` or `npm start` for starting your production build server on `http://localhost:3000`
+- Install it using `yarn add ngn`
+- Initiate NGN using `milkshake init`
 
 **Note:** No unused import is allowed in NGN
