@@ -5,7 +5,8 @@ const session = nextSession({
     name: process.env.SESSION_KEY ?? "ngn_session",
     cookie: {
         secure: process.env.NODE_ENV === 'production',
-        httpOnly: true
+        httpOnly: true,
+        path: '/'
     },
 });
 
