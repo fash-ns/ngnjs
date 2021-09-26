@@ -1,5 +1,5 @@
-const input = require("../utils/input");
-const createFile = require("../utils/createFile");
+import input from "../utils/input";
+import createFile from "../utils/createFile";
 
 const createPage = async () => {
     let manipulationConf = {ssr: false, ssg: false, ssgPath: false};
@@ -19,4 +19,4 @@ const createPage = async () => {
     await createFile(name, "./pages", "./stubs/page.stub", manipulationConf,  {}, "tsx");
 }
 
-module.exports = createPage;
+export = createPage;

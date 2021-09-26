@@ -1,8 +1,7 @@
-const fs = require("fs");
+import fs from "fs";
+import packageCheck from "./utils/packageCheck";
 
 const basePath = process.cwd();
-
-const packageCheck = require("./utils/packageCheck");
 
 const exec = async () => {
     await fs.promises.mkdir(basePath + "/storage/logs", {recursive: true});

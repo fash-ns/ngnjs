@@ -1,11 +1,11 @@
-const fs = require("fs");
+import fs from "fs";
 
 const basePath = process.cwd();
 
 const envPath = basePath + '/.env.local';
 const exampleEnvPath = basePath + './.env.example';
 
-const randomBase64 = (length) => {
+const randomBase64 = (length: number) => {
     const pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/';
     const len = pool.length;
     let res = '';

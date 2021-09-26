@@ -1,12 +1,22 @@
-const fs = require("fs");
-const fileManipulate = require("../utils/fileManipulate");
+import fs from "fs";
+import fileManipulate from "./fileManipulate";
 
-const createFile = async (name, basePath, stubPath, manipulation = {}, context = {}, ext = 'ts') => {
+type manipulationList = {
+    [key: string]: boolean
+}
+
+type contextList = {
+    [key: string]: string
+}
+
+const createFile = async (name: string, basePath: string, stubPath: string, manipulation: manipulationList = {}, context: contextList = {}, ext: string = 'ts') => {
     const basePathNestedLevel = basePath.split('/').length;
     basePath = process.cwd() + '/' + basePath;
     name = name.replace(/\s/g, '');
     const arrName = name.split('/');
     const fileName = arrName.pop();
+    if(typeof fileName == "undefined")
+        throw new Error("File name cannot be undefined");
     const dirName = arrName.join('/');
     const filePath = `${basePath}/${dirName}/${fileName}.${ext}`;
     if(fs.existsSync(filePath)){
@@ -32,4 +42,4 @@ const createFile = async (name, basePath, stubPath, manipulation = {}, context =
     return true;
 }
 
-module.exports = createFile;
+export default createFile;

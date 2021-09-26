@@ -1,9 +1,10 @@
+import {existsSync} from "fs";
+
 const isNPM = () => {
     const basePath = process.cwd();
-    const fs = require("fs");
-    if(!fs.existsSync(basePath + "/yarn.lock"))
+    if(!existsSync(basePath + "/yarn.lock"))
         return "yarn";
     else return "npm";
 }
 
-module.exports = isNPM;
+export default isNPM;

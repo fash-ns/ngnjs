@@ -1,5 +1,5 @@
-const input = require("../utils/input");
-const createFile = require("../utils/createFile");
+import input from "../utils/input";
+import createFile from "../utils/createFile";
 
 const createApi = async () => {
     const name = await input("Select a path/name for your api endpoint: ");
@@ -7,4 +7,4 @@ const createApi = async () => {
     await createFile(name, "./pages/api", "./stubs/api.stub", {formData: useFormData});
 }
 
-module.exports = createApi;
+export = createApi;
