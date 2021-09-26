@@ -6,6 +6,7 @@ import withRequest from "ngn/dist/middlewares/withRequest";
 import withValidator from "ngn/dist/middlewares/withValidator";
 import withIp from "ngn/dist/middlewares/withIp";
 import withThrottle from "ngn/dist/middlewares/withThrottle";
+import withSession from "ngn/dist/middlewares/withSession";
 
 const middlewares: Keyable<Array<Middleware>> = {
     "/": [
@@ -14,7 +15,8 @@ const middlewares: Keyable<Array<Middleware>> = {
         withThrottle,
         decryptCookies,
         withSetCookie,
-        withValidator
+        withValidator,
+        withSession
     ]
 };
 

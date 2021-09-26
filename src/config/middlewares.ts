@@ -6,6 +6,7 @@ import withRequest from "../middlewares/withRequest";
 import withValidator from "../middlewares/withValidator";
 import withIp from "../middlewares/withIp";
 import withThrottle from "../middlewares/withThrottle";
+import withSession from "../middlewares/withSession";
 
 
 const middlewares: Keyable<Array<Middleware>> = {
@@ -15,7 +16,8 @@ const middlewares: Keyable<Array<Middleware>> = {
         withThrottle,
         decryptCookies,
         withSetCookie,
-        withValidator
+        withValidator,
+        withSession
     ]
 };
 
