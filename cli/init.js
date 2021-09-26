@@ -3,13 +3,13 @@ const fs = require("fs");
 const basePath = process.cwd();
 
 const packageCheck = require("./utils/packageCheck");
-const isNpm = require("./utils/isNPM");
 
 const exec = async () => {
     await fs.promises.mkdir(basePath + "/storage/logs", {recursive: true});
     await fs.promises.mkdir(basePath + "/storage/cache", {recursive: true});
     await fs.promises.mkdir(basePath + "/config", {recursive: true});
     await fs.promises.mkdir(basePath + "/storage/public/uploads", {recursive: true});
+    await fs.promises.mkdir(basePath + "/pages/api/storage", {recursive: true});
 
     await fs.promises.writeFile(basePath + "/storage/logs/.gitignore", "*.log")
     await fs.promises.writeFile(basePath + "/storage/cache/.gitignore", "*\n!.gitignore")
@@ -23,6 +23,8 @@ const exec = async () => {
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/config/middlewares.stub', basePath + "/config/middlewares.ts");
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/config/rate-limit.stub', basePath + "/config/rate-limit.json");
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/config/trustedProxies.stub', basePath + "/config/trustedProxies.json");
+
+    await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/staticContentGen.stub', basePath + "/pages/api/storage/[...path].ts");
 
     if(!packageCheck("next-connect")){
         console.log("\x1b[33mnext-connect is not installed. Please install next-connect@^0.10.2\x1b[0m");

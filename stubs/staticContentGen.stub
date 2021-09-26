@@ -1,0 +1,19 @@
+import handler from "../../../handler";
+import {NGNApiResponse} from "ngnjs/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngnjs/dist/types/NGNApiRequest";
+import File from "ngnjs/dist/facades/File/File";
+import Path from "ngnjs/dist/facades/Path";
+
+export default handler().get(async (req: NGNApiRequest, res: NGNApiResponse) => {
+    const pathArr: string | Array<string> = req.query.path;
+    let path: string;
+    if(Array.isArray(pathArr))
+        path = pathArr.join("/");
+    else path = pathArr;
+    const filename = Path.makeUploadsPath(path);
+    const file = new File(filename);
+    const data = await file.getBuffer();
+    const mime = await file.guessMimeType();
+    return res.setHeader("content-type", mime)
+        .setHeader("content-length", data.length).end(data, "binary");
+});
