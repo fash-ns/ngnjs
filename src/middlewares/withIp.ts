@@ -2,7 +2,6 @@ import {Middleware} from "../types/Middleware";
 import {NGNApiRequest} from "../types/NGNApiRequest";
 import {NGNApiResponse} from "../types/NGNApiResponse";
 import {NextHandler} from "../types/NextHandler";
-import sampleTrustedProxies from "../config/trustedProxies";
 import Ip from "../facades/Ip";
 import loadConfFile from "../utils/helpers/loadConfFile";
 
@@ -16,7 +15,7 @@ import loadConfFile from "../utils/helpers/loadConfFile";
  */
 
 const withIp: Middleware = (req: NGNApiRequest, res: NGNApiResponse, next: NextHandler) => {
-    const trustedProxies = loadConfFile("config/trustedProxies", sampleTrustedProxies);
+    const trustedProxies = loadConfFile("config/trustedProxies");
     const remoteAddress = req.connection.remoteAddress?.substr(7);
     let ip = remoteAddress;
     if(typeof remoteAddress !== "undefined" && Ip.validate(remoteAddress) && trustedProxies.includes(remoteAddress))
