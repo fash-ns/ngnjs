@@ -1,8 +1,0 @@
-import handler from "../../handler";
-import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
-import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
-
-export default handler().get((req: NGNApiRequest, res: NGNApiResponse) => {
-    //TODO: implement endpoint
-    res.status(200).json({message: "new endpoint created", name: "{name}.ts", supportsFormData: false});
-});

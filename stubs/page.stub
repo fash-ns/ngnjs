@@ -12,4 +12,19 @@ const {name} = () => {
     </>);
 }
 
+{B/ssg}export async function getStaticProps() {{E/ssg}
+{B/ssg}    //TODO: implement SSG data fetching functionality{E/ssg}
+{B/ssg}    return {props: {}}{E/ssg}
+{B/ssg}}{E/ssg}
+
+{B/ssgPath}export async function getStaticPaths() {{E/ssgPath}
+{B/ssgPath}    //TODO: implement SSG paths logic{E/ssgPath}
+{B/ssgPath}    return {paths: [], fallback: true}{E/ssgPath}
+{B/ssgPath}}{E/ssgPath}
+
+{B/ssr}export async function getServerSideProps() {{E/ssr}
+{B/ssr}    //TODO: implement SSR functionality{E/ssr}
+{B/ssr}    return {props: {}}{E/ssr}
+{B/ssr}}{E/ssr}
+
 export default {name};

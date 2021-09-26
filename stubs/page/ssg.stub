@@ -1,5 +1,0 @@
-
-export async function getStaticProps() {
-    //TODO: implement SSG data fetching functionality
-    return {props: {}}
-}

@@ -1,0 +1,13 @@
+import handler from "../../handler";
+import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
+{B/formData}import withFormData from "ngn/dist/middlewares/withFormData";{E/formData}
+
+export default handler(){B/formData}.use(withFormData){E/formData}.get((req: NGNApiRequest, res: NGNApiResponse) => {
+    //TODO: implement endpoint
+    res.status(200).json({message: "new endpoint created", name: "{name}.ts"});
+});
+
+{B/formData}export const config = {{E/formData}
+{B/formData}    api: {bodyParser: false}{E/formData}
+{B/formData}}{E/formData}

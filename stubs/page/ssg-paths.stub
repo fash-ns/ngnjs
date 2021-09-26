@@ -1,5 +1,0 @@
-
-export async function getStaticPaths() {
-    //TODO: implement SSG paths logic
-    return {paths: [], fallback: true}
-}

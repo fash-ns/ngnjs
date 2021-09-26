@@ -1,7 +1,7 @@
 const basePath = process.cwd() + '/node_modules/ngn';
 
 const fs = require("fs");
-const rl = require("./rl");
+const rl = require("./utils/rl");
 
 const args = process.argv.slice(2);
 const command = args[1];
