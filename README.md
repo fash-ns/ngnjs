@@ -32,5 +32,3 @@ next js. Lots of features are added to next js by NGN. some of them are:
 
 - Install it using `yarn add ngn`
 - Initiate NGN using `milkshake init`
-
-**Note:** No unused import is allowed in NGN
