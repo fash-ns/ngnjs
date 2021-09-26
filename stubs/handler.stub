@@ -1,0 +1,41 @@
+import nc from "next-connect"
+import sampleMiddlewares from "./config/middlewares";
+import {NextApiRequest} from "ngn/dist/types/NextApiRequest";
+import {NextApiResponse} from "ngn/dist/types/NextApiResponse";
+import Logger from "ngn/dist/services/logger/Logger";
+import Keyable from "ngn/dist/types/Keyable";
+import NGNError from "ngn/dist/errors/NGNError";
+import loadConfFile from "ngn/dist/utils/helpers/loadConfFile";
+import {Middleware} from "ngn/dist/types/Middleware";
+
+const errorHandler = (err: NGNError, req: NextApiRequest, res: NextApiResponse) => {
+    const context: Keyable = {
+        url: req.url,
+        body: req.body,
+        queryString: req.query,
+        method: req.method,
+    }
+    Logger.getInstance().error(err.stack ?? err.message, context);
+    const debug: boolean = process.env.APP_DEBUG === "true";
+    const body = ((err.isPrivateMessage && !debug) ? {message: "server error"} : {message: err.message, ...err.context});
+    res.status(err.status ?? 500).json(body);
+    res.end();
+}
+
+const noMatchHandler = (req: NextApiRequest, res: NextApiResponse) => {
+    return res.status(405).json({message: `method ${req.method} is not supported`})
+}
+
+const handler = () => {
+    const middlewares = loadConfFile('config/middlewares', sampleMiddlewares);
+    const instance = nc({onError: errorHandler, onNoMatch: noMatchHandler});
+    for (let endpoint in middlewares){
+        if(middlewares.hasOwnProperty(endpoint))
+            middlewares[endpoint].forEach((item: Middleware) => {
+                instance.use(`/api${endpoint}`, item);
+            });
+    }
+    return instance;
+}
+
+export default handler;

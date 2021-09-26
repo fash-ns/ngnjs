@@ -1,9 +1,9 @@
-import nc from "ngn/dist/utils/baseNC";
+import handler from "../../handler";
 import {NGNApiResponse} from "ngn/dist/types/NGNApiResponse";
 import {NGNApiRequest} from "ngn/dist/types/NGNApiRequest";
 import withFormData from "ngn/dist/middlewares/withFormData";
 
-export default nc().use(withFormData).get(async (req: NGNApiRequest, res: NGNApiResponse) => {
+export default handler().use(withFormData).get(async (req: NGNApiRequest, res: NGNApiResponse) => {
     //TODO: implement endpoint
     res.status(200).json({message: "new endpoint created", name: "{name}.ts", supportsFormData: true});
 });

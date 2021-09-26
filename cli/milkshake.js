@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
 const basePath = process.cwd() + '/node_modules/ngn';
 

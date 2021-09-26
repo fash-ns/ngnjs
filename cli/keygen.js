@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const basePath = process.cwd();
 
-const envPath = basePath + '/.env';
+const envPath = basePath + '/.env.local';
 const exampleEnvPath = basePath + './.env.example';
 
 const randomBase64 = (length) => {
