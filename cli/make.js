@@ -1,4 +1,4 @@
-const basePath = process.cwd() + '/node_modules/ngn';
+const basePath = process.cwd() + '/node_modules/ngnjs';
 
 const fs = require("fs");
 const rl = require("./utils/rl");

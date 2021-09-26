@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const basePath = process.cwd() + '/node_modules/ngn';
+const basePath = process.cwd() + '/node_modules/ngnjs';
 
 const args = process.argv.slice(2);
 const command = args[0];
