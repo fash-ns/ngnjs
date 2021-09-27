@@ -10,9 +10,9 @@ const exec = async () => {
     await fs.promises.mkdir(basePath + "/storage/public/uploads", {recursive: true});
     await fs.promises.mkdir(basePath + "/pages/api/storage", {recursive: true});
 
-    await fs.promises.writeFile(basePath + "/storage/logs/.gitignore", "*.log")
-    await fs.promises.writeFile(basePath + "/storage/cache/.gitignore", "*\n!.gitignore")
-    await fs.promises.writeFile(basePath + "/storage/public/uploads/.gitignore", "*\n!.gitignore")
+    await fs.promises.writeFile(basePath + "/storage/logs/.gitignore", "*.log");
+    await fs.promises.writeFile(basePath + "/storage/cache/.gitignore", "*\n!.gitignore");
+    await fs.promises.writeFile(basePath + "/storage/public/uploads/.gitignore", "*\n!.gitignore");
 
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/env.stub', basePath + "/.env.example");
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/env.stub', basePath + "/.env.local");
@@ -24,6 +24,7 @@ const exec = async () => {
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/config/trustedProxies.stub', basePath + "/config/trustedProxies.json");
 
     await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/staticContentGen.stub', basePath + "/pages/api/storage/[...path].ts");
+    await fs.promises.copyFile(basePath + '/node_modules/ngnjs/stubs/loggerApi.stub', basePath + "/pages/api/log.ts");
 
     if(!packageCheck("next-connect")){
         console.log("\x1b[33mnext-connect is not installed. Please install next-connect@^0.10.2\x1b[0m");

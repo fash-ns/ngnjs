@@ -1,0 +1,26 @@
+import handler from "../../handler";
+import {NGNApiResponse} from "ngnjs/dist/types/NGNApiResponse";
+import {NGNApiRequest} from "ngnjs/dist/types/NGNApiRequest";
+import Logger from "ngnjs/dist/services/logger/Logger";
+import {LogLevels, LogLevelsString} from "ngnjs/dist/services/logger/LoggerInterface";
+import RequiredRule from "ngnjs/dist/services/validator/rules/RequiredRule";
+import InRule from "ngnjs/dist/services/validator/rules/InRule";
+
+export default handler().post(async (req: NGNApiRequest, res: NGNApiResponse) => {
+    let keys = Object.keys(LogLevels);
+    const keysLen = keys.length;
+    keys = keys.slice(keysLen / 2);
+
+    await req.validate({
+        level: [new RequiredRule(), new InRule(keys)],
+        message: [new RequiredRule()]
+    });
+
+    const level = req.all.level as LogLevelsString;
+    const message = req.all.message;
+    const context = req.all.context ?? {};
+
+    Logger.getInstance().log(LogLevels[level], message, context)
+
+    res.status(200).json({message, level, context});
+});
