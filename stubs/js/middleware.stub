@@ -1,0 +1,5 @@
+const {name} = (req, res, next) => {
+    next(); //TODO: implement {name} middleware
+}
+
+export default {name};

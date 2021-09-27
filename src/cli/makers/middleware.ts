@@ -1,9 +1,9 @@
 import input from "../utils/input";
-import createFile from "../utils/createFile";
+import makeFileFromStub from "../utils/makeFileFromStub";
 
 const createMiddleware = async () => {
     const name = await input("Select a path/name for your middleware: ");
-    await createFile(name, "./src/middlewares", "./stubs/middleware.stub");
+    await makeFileFromStub(name, "./src/middlewares", "/middleware.stub");
 }
 
 export = createMiddleware;

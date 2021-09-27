@@ -1,0 +1,34 @@
+import nc from "next-connect"
+import middlewares from "./config/middlewares";
+import Logger from "ngnjs/dist/services/logger/Logger";
+
+const errorHandler = (err, req, res) => {
+    const context = {
+        url: req.url,
+        body: req.body,
+        queryString: req.query,
+        method: req.method,
+    }
+    Logger.getInstance().error(err.stack ?? err.message, context);
+    const debug = process.env.APP_DEBUG === "true";
+    const body = ((err.isPrivateMessage && !debug) ? {message: "server error"} : {message: err.message, ...err.context});
+    res.status(err.status ?? 500).json(body);
+    res.end();
+}
+
+const noMatchHandler = (req, res) => {
+    return res.status(405).json({message: `method ${req.method} is not supported`})
+}
+
+const handler = () => {
+    const instance = nc({onError: errorHandler, onNoMatch: noMatchHandler});
+    for (let endpoint in middlewares){
+        if(middlewares.hasOwnProperty(endpoint))
+            middlewares[endpoint].forEach((item) => {
+                instance.use(`/api${endpoint}`, item);
+            });
+    }
+    return instance;
+}
+
+export default handler;

@@ -1,0 +1,21 @@
+import withSetCookie from "ngnjs/dist/middlewares/withSetCookie";
+import decryptCookies from "ngnjs/dist/middlewares/decryptCookies";
+import withRequest from "ngnjs/dist/middlewares/withRequest";
+import withValidator from "ngnjs/dist/middlewares/withValidator";
+import withIp from "ngnjs/dist/middlewares/withIp";
+import withThrottle from "ngnjs/dist/middlewares/withThrottle";
+import withSession from "ngnjs/dist/middlewares/withSession";
+
+const middlewares = {
+    "/": [
+        withRequest,
+        withIp,
+        withThrottle,
+        decryptCookies,
+        withSetCookie,
+        withValidator,
+        withSession
+    ]
+};
+
+export default middlewares;

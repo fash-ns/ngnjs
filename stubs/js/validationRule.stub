@@ -1,0 +1,13 @@
+class {name} {
+    evaluate(object) {
+        //TODO: implement validation rule logic
+        return true;
+    }
+
+    getError(fieldName) {
+        //TODO: determine error message
+        return "";
+    }
+}
+
+export default {name};

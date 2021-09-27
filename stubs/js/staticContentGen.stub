@@ -1,0 +1,17 @@
+import handler from "../../../handler";
+import File from "ngnjs/dist/facades/File/File";
+import Path from "ngnjs/dist/facades/Path";
+
+export default handler().get(async (req, res) => {
+    const pathArr = req.query.path;
+    let path;
+    if(Array.isArray(pathArr))
+        path = pathArr.join("/");
+    else path = pathArr;
+    const filename = Path.makeUploadsPath(path);
+    const file = new File(filename);
+    const data = await file.getBuffer();
+    const mime = await file.guessMimeType();
+    return res.setHeader("content-type", mime)
+        .setHeader("content-length", data.length).end(data, "binary");
+});

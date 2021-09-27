@@ -1,5 +1,5 @@
 import input from "../utils/input";
-import createFile from "../utils/createFile";
+import makeFileFromStub from "../utils/makeFileFromStub";
 
 const createPage = async () => {
     let manipulationConf = {ssr: false, ssg: false, ssgPath: false};
@@ -16,7 +16,7 @@ const createPage = async () => {
                 manipulationConf.ssgPath = true;
         }
     }
-    await createFile(name, "./pages", "./stubs/page.stub", manipulationConf,  {}, "tsx");
+    await makeFileFromStub(name, "./pages", "/page.stub", manipulationConf,  {}, "tsx");
 }
 
 export = createPage;

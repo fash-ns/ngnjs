@@ -1,0 +1,10 @@
+import Resource from "ngnjs/dist/services/Resource";
+
+class {name} extends Resource{
+    make(context) {
+        //TODO: implement {name} resource
+        return super.make(context);
+    }
+}
+
+export default {name}

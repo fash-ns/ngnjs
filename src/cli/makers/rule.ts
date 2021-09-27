@@ -1,9 +1,9 @@
 import input from "../utils/input";
-import createFile from "../utils/createFile";
+import makeFileFromStub from "../utils/makeFileFromStub";
 
 const createValidationRule = async () => {
     const name = await input("Select a path/name for your rule: ");
-    await createFile(name, "./src/validationRules", "./stubs/validationRule.stub");
+    await makeFileFromStub(name, "./src/validationRules", "/validationRule.stub");
 }
 
 export = createValidationRule;

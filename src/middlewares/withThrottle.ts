@@ -6,10 +6,9 @@ import TooManyRequestsError from "../errors/TooManyRequestsError";
 import loadConfFile from "../utils/helpers/loadConfFile";
 
 const withThrottle = async (req: NGNApiRequest & {ip: string | null}, res: NGNApiResponse, next: () => void) => {
-    const config = loadConfFile("config/rate-limit");
+    const config = loadConfFile("config/rateLimit");
     const rateLimitInSeconds = config.duration;
     const numberOfRequests = config.number;
-    console.log({rateLimitInSeconds});
     const cache = new RedisCache();
     let serverIp = '';
     if((await cache.has("server_ip")))

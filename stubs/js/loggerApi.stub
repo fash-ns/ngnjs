@@ -1,0 +1,24 @@
+import handler from "../../handler";
+import Logger from "ngnjs/dist/services/logger/Logger";
+import {LogLevels} from "ngnjs/dist/services/logger/LoggerInterface";
+import RequiredRule from "ngnjs/dist/services/validator/rules/RequiredRule";
+import InRule from "ngnjs/dist/services/validator/rules/InRule";
+
+export default handler().post(async (req, res) => {
+    let keys = Object.keys(LogLevels);
+    const keysLen = keys.length;
+    keys = keys.slice(keysLen / 2);
+
+    await req.validate({
+        level: [new RequiredRule(), new InRule(keys)],
+        message: [new RequiredRule()]
+    });
+
+    const level = req.all.level;
+    const message = req.all.message;
+    const context = req.all.context ?? {};
+
+    Logger.getInstance().log(LogLevels[level], message, context)
+
+    res.status(200).json({message, level, context});
+});

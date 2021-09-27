@@ -7,7 +7,7 @@ const packageCheck = (name: string) => {
     if(!existsSync(packageJsonPath))
         return false;
     const packageJson = JSON.parse(readFileSync(packageJsonPath).toString());
-    return packageJson.dependencies.hasOwnProperty(name);
+    return packageJson.dependencies.hasOwnProperty(name) || packageJson.devDependencies.hasOwnProperty(name);
 }
 
 export default packageCheck;
