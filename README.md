@@ -149,7 +149,7 @@ more features than default NextJs:
     ```
 
    This code snippet checks if *name* field is passed to your api. If it's
-   not passed, a *429* status code will be returned with the error of invalidated
+   not passed, a *422* status code will be returned with the error of invalidated
    field. For example if *name* is not passed to the code above, something
    like the bellow response will be returned:
 
