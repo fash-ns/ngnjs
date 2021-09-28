@@ -434,3 +434,68 @@ const middlewares = {
 
 export default middlewares;
 ```
+
+## Caching
+
+NGNJs supports two driver for handling cache: *File* and *Redis*.
+You need to have redis-server if you want to use Redis cache driver.
+
+you can use cache ability by importing one of *RedisCache* or *FileCache*:
+
+```javascript
+import RedisCache from "ngn/dist/services/cache/RedisCache";
+import FileCache from "ngn/dist/services/cache/FileCache";
+```
+
+### Methods supported by cache drivers:
+
+1. `async get(key, defaultValue)`: returns value of key in cache storage if
+   key is existed and default value otherwise.
+2. `async set(key, value, ttl?)`: Sets a key in cache storage with the
+   provided value for a specific time which is set with TTL
+   (TTL is in seconds). If ttl is not provided, key will be kept forever
+3. `async delete(key)`: Deletes a key from cache storage
+4. `async clear()`: Deletes all keys.
+5. `async getMultiple(keys)`: Gets an array of keys and returns an object
+   of key value pair.
+6. `async setMultiple(object)`: Gets an object of key values and sets them
+   in cache storage.
+7. `async deleteMultiple(keys)`: Gets an array of keys and deletes them.
+8. `async getTTL(key)`: Returns remaining time to live of a key.
+9. `async has(key)`: Returns *true* if key is existed and *false* otherwise.
+## Static content
+
+You may want to show an image you've uploaded before. A solution is to use
+third party services like *AS3*. You can also access all of your files
+located in `storage/public/` with `/api/storage` endpoint. for example,
+consider a file located in `storage/public/images/1.jpg`. You can view it
+by calling `/api/storage/images/1.jpg` in browser.
+
+**CAUTION**: Using storage endpoint is not optimized, and it's highly
+recommended to you to use aliases to point `storage/public` to `/storage`
+with your webserver config.
+
+### creating file URL and path
+
+You can use *Path* facade to generate URL and/or path of a file located in
+`storage` directory. *Path* facade has some methods which is described
+bellow by an example. (In this example, project is in
+`/var/www/http/ngn` directory):
+
+```javascript
+import Path from "ngn/dist/facades/Path";
+
+const imagePath = '/images/1.jpg';
+
+Path.makeStorageUrl(imagePath);
+    //returns http://localhost:3000/api/storage/images/1.jpg
+Path.makePublicStoragePath(imagePath);
+    //returns /var/www/http/ngn/storage/public/images/1.jpg
+Path.makeStoragePath(imagePath);
+   //returns /var/www/http/ngn/storage/images/1.jpg
+Path.makeUploadsPath(imagePath);
+   //returns /var/www/http/ngn/storage/public/uploads/images/1.jpg
+```
+
+*Note*: You have to set *STORAGE_BASE_URL* env variable to use
+*makeStorageUrl* method.

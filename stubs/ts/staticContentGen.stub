@@ -10,7 +10,7 @@ export default handler().get(async (req: NGNApiRequest, res: NGNApiResponse) => 
     if(Array.isArray(pathArr))
         path = pathArr.join("/");
     else path = pathArr;
-    const filename = Path.makeUploadsPath(path);
+    const filename = Path.makePublicStoragePath(path);
     const file = new File(filename);
     const data = await file.getBuffer();
     const mime = await file.guessMimeType();

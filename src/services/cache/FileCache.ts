@@ -56,9 +56,10 @@ class FileCache implements CacheDriver{
             return defaultVal;
         let data = (await fs.promises.readFile(path)).toString();
         let arrayify = data.split("|");
-        const ttl = arrayify.shift() ?? "0";
+        const ttlString = arrayify.shift() ?? "-1";
+        const ttl = parseInt(ttlString, 10)
         const timestamp = new Date().getTime();
-        if(parseInt(ttl, 10) < timestamp) {
+        if(ttl >= 0 && ttl < timestamp) {
             await this.delete(key);
             return defaultVal;
         }
@@ -81,7 +82,7 @@ class FileCache implements CacheDriver{
             return false;
         const ttl = await this.getTTL(key);
         const timestamp = new Date().getTime();
-        if(ttl < timestamp) {
+        if(ttl >= 0 && ttl < timestamp) {
             await this.delete(key);
             return false;
         }
@@ -90,7 +91,7 @@ class FileCache implements CacheDriver{
 
     async set(key: string, val: any, ttl: number | undefined = undefined): Promise<void> {
         const timestamp = new Date().getTime();
-        ttl = (typeof ttl === "undefined") ? (timestamp + 3.6e6) : (timestamp + (ttl * 1000));
+        ttl = (typeof ttl === "undefined" || ttl < 0) ? -1 : (timestamp + (ttl * 1000));
         const data = ttl.toString() + "|" + JSON.stringify(val);
         await fs.promises.writeFile(this.basePath + "/" + FileCache.toSha256(key), data);
     }
@@ -105,8 +106,8 @@ class FileCache implements CacheDriver{
     async getTTL(key: string): Promise<number> {
         let data = (await fs.promises.readFile(this.basePath + "/" + FileCache.toSha256(key))).toString();
         let arrayify = data.split("|");
-        const cacheTs = parseInt(arrayify.shift() ?? "0");
-        return Math.floor((cacheTs - new Date().getTime()) / 1000);
+        const cacheTs = parseInt(arrayify.shift() ?? "-1");
+        return Math.max(Math.floor((cacheTs - new Date().getTime()) / 1000), -1);
     }
 
 }
