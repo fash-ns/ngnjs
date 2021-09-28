@@ -1,15 +1,22 @@
 import {NGNApiRequest} from "../types/NGNApiRequest";
 import {NGNApiResponse} from "../types/NGNApiResponse";
+import FileCache from "../services/cache/FileCache";
 import RedisCache from "../services/cache/RedisCache";
 import {networkInterfaces} from "os";
 import TooManyRequestsError from "../errors/TooManyRequestsError";
 import loadConfFile from "../utils/helpers/loadConfFile";
+import InvalidConfFileError from "../errors/InvalidConfFileError";
 
 const withThrottle = async (req: NGNApiRequest & {ip: string | null}, res: NGNApiResponse, next: () => void) => {
     const config = loadConfFile("config/rateLimit");
     const rateLimitInSeconds = config.duration;
     const numberOfRequests = config.number;
-    const cache = new RedisCache();
+    let cache;
+    if(config.driver === "file")
+        cache = new FileCache();
+    else if(config.driver === "redis")
+        cache = new RedisCache();
+    else throw new InvalidConfFileError(`Driver ${config.driver} is not supported. "redis" or "file" should be used in rateLimit.json`);
     let serverIp = '';
     if((await cache.has("server_ip")))
         serverIp = await cache.get("server_ip")

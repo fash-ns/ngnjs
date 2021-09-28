@@ -337,3 +337,100 @@ In api you can simply use `req.validate` asynchronous function. Is has only one 
 names to an array of rules. All of your request data (query string, body and files) are passed to validator function
 automatically. `req.validate` throws an `ValidationError` error on request is not validate with rules check. This error
 is automatically caught and returns an object holds message and errors with the status code of *422*.
+
+## Errors
+
+Almost all API errors are caught using NGN request handler. There are two
+main types of errors:
+
+1. NGNError: THis error is a throwable class with extended from javascript
+   native *Error* class. NGNError expects three arguments:
+
+    - status: status code of response when error is thrown.
+    - message: error message
+    - context: an object which holds additional data about error and
+      returned in response.
+
+   Feel free to develop your own errors with even default status code or
+   message by extending this class.
+
+2. NGNSilentError: Is NGNError but error message and context is shown
+   to user only when *APP_DEBUG* env variable is set to true and
+   *Server error* message will be returned otherwise. You always have
+   error details in logs by the way.
+
+## Logging
+
+Logging is NGNJs is as simple as importing `Logger` class. Log files are
+located in `storage/logs/` directory. new log file is generated each day and
+older log files **are never deleted**. Logs can be submitted in 8 different
+levels: (*emergency, alert, critical, error, warning, notice, info, debug*)
+These levels are the priority of log message. You can set *LOG_LEVEL* env
+variable to ignore logs with levels less than *LOG_LEVEL* to be logged.
+
+### logging in server-side
+
+Since logging required *filesystem* support, you can use *Logger* class only
+in server-side. This class uses singleton pattern and you need to create
+an instance of it with `getInstance()` static method like the code bellow:
+
+```javascript
+import Logger from "ngn/dist/services/logger/Logger"
+
+const logger = Logger.getInstance();
+logger.error("ERROR", {notFrom: "NGNJs"});
+```
+
+### logging in client-side
+
+although you cannot use Logger class to log messages in client-side, an
+API endpoint will be created for you called *log* on NGNJs initialization.
+You can use that API to use logging feature client-side:
+
+```javascript
+import axios from "axios";
+
+axios.post("/api/log", {
+    level: "ERROR",
+    message: "ERROR",
+    context: {notFrom: "NGNJs"}
+})
+```
+
+## Configuration
+
+All NGNJs config files are located in `config/` directory. This directory
+is created by NGNJs initialization:
+
+1. rateLimit: This file is configuration for *withThrottle* middleware to
+   throttle your users' api requests. This middleware is enabled globally by
+   default, but you can comment it if you want. You will learn how to set
+   a middleware globally later in this section.
+
+2. trustedProxies: An array of ip addresses to be considered trusted. If
+   request is sent to your application from these IPs, `req.ip` will be
+   `X-Forwarded-For` or `X-Real-Ip` header in case of existence. Otherwise,
+   `req.ip` will be *remote address*
+
+3. middlewares: You can manage global middlewares in this file. This file
+   returns an object which maps endpoints to a group of middlewares.
+   custom middlewares could be created using `milkshake make middleware`
+   command.
+
+### Using global custom middlewares
+Imagine you created a middleware called *withUser* which you want to apply
+it to all api endpoint starts with `/users`. You can change *middlewares*
+config file like bellow:
+
+```javascript
+import withUser from "../src/middlewares/withUser"
+
+const middlewares = {
+    "/": [
+        //All global middlewares
+    ],
+    "/users": [withUser]
+}
+
+export default middlewares;
+```

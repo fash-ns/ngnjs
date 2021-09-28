@@ -1,5 +1,6 @@
 {
   "number": 60,
   "duration": 60,
-  "ipExceptions": []
+  "ipExceptions": [],
+  "driver": "file"
 }
