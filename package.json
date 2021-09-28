@@ -1,6 +1,6 @@
 {
   "name": "ngnjs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": ["nextjs", "javascript", "typescript", "api", "validator", "resource", "uploader", "storage", "cookie",
   "session", "milkshake", "commander", "middleware", "router", "utils", "file-handler", "cache", "logger", "error-catcher"],
   "description": "Set of utils for make NextJs even easier",
